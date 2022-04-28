@@ -1,0 +1,38 @@
+.ref-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 10px 10px;
+  border-bottom: #c6c6c6 solid 2px;
+}
+
+.brand {
+  margin: 5px 0;
+  font-size: 12px;
+  font-weight: 700;
+  color: #999;
+}
+.ref {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #121212;
+}
+.price {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  margin: 5px 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #323232;
+}
+.price span {
+  color: #999;
+  font-size: 18px;
+  margin-left: 10px;
+  text-decoration-line: line-through;
+}
+.ref-container hr {
+  background-color: #656565;
+}

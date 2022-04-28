@@ -1,0 +1,13 @@
+.feature-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  z-index: 15;
+  background-color: #fff;
+}
+@media screen and (min-width: 600px) {
+  .feature-container {
+    max-width: 50%;
+    padding: 0 30px;
+  }
+}
