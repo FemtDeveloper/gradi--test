@@ -1,69 +1,56 @@
 import React, { useContext } from "react";
+import { useState } from "react";
 import { ProductContext } from "../../context/ProductContext";
 import "./Carousel.css";
 
 const Carousel = () => {
+  // const [position, setPosition] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(null);
   const { data } = useContext(ProductContext);
-  // const [index, setIndex] = useState(0);
 
-  const mainCarousel = document.querySelector(".image-container");
-  const thumbnails = document.querySelector(".thumbnails");
-  const dot = document.querySelectorAll(".dot");
-  const thumbnail = document.querySelectorAll(".thumbnail");
+  const handleDots = (index) => {
+    // setPosition(index);
+    setActiveIndex(index);
+  };
 
-  dot.forEach((d, i) => {
-    dot[i].addEventListener("click", () => {
-      let position = i;
-      let translate = position * -25;
-      mainCarousel.style.transform = `translatex(${translate}%)`;
-      dot.forEach((d, i) => {
-        dot[i].classList.remove("active");
-      });
-      dot[i].classList.add("active");
-    });
-  });
-  thumbnail.forEach((d, i) => {
-    thumbnail[i].addEventListener("click", () => {
-      let position = i;
-      console.log(position);
-      let translate = position * -25;
-      mainCarousel.style.transform = `translatex(${translate}%)`;
-      let translateThumbnails = position * -33;
-      thumbnails.style.transform = `translatex(${translateThumbnails}%)`;
-      if (translateThumbnails < -98) {
-        translateThumbnails = 0;
-        thumbnails.style.transform = `translatex(${translateThumbnails}%)`;
-      }
-
-      thumbnail.forEach((d, i) => {
-        dot[i].classList.remove("active");
-      });
-      dot[i].classList.add("active");
-    });
-  });
   return (
     <>
       {!data ? (
         "Loading"
       ) : (
         <div className="main-carousel">
-          <div className="image-container">
+          <div
+            className="image-container"
+            style={{ transform: `translatex(${activeIndex * -25}%)` }}
+          >
             {data.images.map((image) => (
               <img src={image} alt="free trainer" key={image} />
             ))}
           </div>
           <ul className="dots">
-            {data.images.map((image) => (
-              <li className="dot" key={image}></li>
+            {data.images.map((image, i) => (
+              <li
+                className={i === activeIndex ? "dot active" : "dot"}
+                key={image}
+                onClick={() => handleDots(i)}
+              ></li>
             ))}
           </ul>
           <div className="thumbnails">
-            {data.images.map((image) => (
+            {data.images.map((image, i) => (
               <img
                 src={image}
                 alt="free trainer"
                 key={image}
                 className="thumbnail"
+                onClick={() => handleDots(i)}
+                style={{
+                  transform:
+                    activeIndex !== 3
+                      ? `translatex(${activeIndex * -45}%)`
+                      : "translatex(0%)",
+                  transition: "all 0.5s ease",
+                }}
               />
             ))}
           </div>
