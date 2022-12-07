@@ -1,15 +1,13 @@
 import React, { useContext } from "react";
 import { useState } from "react";
-import { ProductContext } from "../../context/ProductContext";
+import { ProductsContext } from "../../context/ProductContext";
 import "./Carousel.css";
 
 const Carousel = () => {
-  // const [position, setPosition] = useState(0);
   const [activeIndex, setActiveIndex] = useState(null);
-  const { data } = useContext(ProductContext);
+  const { data } = useContext(ProductsContext);
 
   const handleDots = (index) => {
-    // setPosition(index);
     setActiveIndex(index);
   };
 

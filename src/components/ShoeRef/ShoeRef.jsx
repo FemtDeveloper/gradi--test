@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { ProductContext } from "../../context/ProductContext";
+import { ProductsContext } from "../../context/ProductContext";
 import "./ShoeRef.css";
 
 const ShoeRef = () => {
-  const { data } = useContext(ProductContext);
+  const { data } = useContext(ProductsContext);
 
   return (
     <>

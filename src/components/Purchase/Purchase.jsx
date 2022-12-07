@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useContext } from "react";
+import { ProductContext } from "../../context/ProductProvider";
 import "./Purchase.css";
 
 const Purchase = () => {
@@ -7,6 +9,8 @@ const Purchase = () => {
   const [quantity, setQuantity] = useState(0);
   const [isInCart, setIsInCart] = useState(false);
   const [isFavorite, setisFavorite] = useState(false);
+
+  const { selectedSize, selectedColor } = useContext(ProductContext);
 
   const addToCart = () => {
     setIsInCart(true);
@@ -43,7 +47,9 @@ const Purchase = () => {
 
       <div className="btn-parent">
         {isInCart && (
-          <p className="addedToCart">Product has been added to cart</p>
+          <p className="addedToCart">
+            You has added {selectedColor} {selectedSize} to cart
+          </p>
         )}
 
         <div className="button-container">
